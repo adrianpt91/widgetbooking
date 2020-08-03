@@ -1,0 +1,181 @@
+<ng-template #elseTemplate2>
+<div class="container">
+    <div class="row-container" nz-row nzJustify="start">
+        <div nz-col nzSm="6" nzMd="3" nzLg="4" class="col-container">
+          <nz-select [(ngModel)]="selectedType" (ngModelChange)="TypeChange($event)">
+            <nz-option *ngFor="let t of typeData" [nzValue]="t" [nzLabel]="t"></nz-option>
+          </nz-select>
+        </div>
+        <div nz-col nzSm="6" nzMd="3" nzLg="4" class="col-container">
+          <nz-select [(ngModel)]="selectedClass" (ngModelChange)="ClassChange($event)">
+            <nz-option *ngFor="let c of classData" [nzValue]="c" [nzLabel]="c"></nz-option>
+          </nz-select>
+        </div>
+        <div nz-col nzSm="6" nzMd="3" nzLg="2" class="col-container">
+            <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu3" [nzClickHide]="false">
+               {{totalTravelers}} Travelers
+                <i nz-icon nzType="down"></i>
+            </a>
+              <nz-dropdown-menu #menu3="nzDropdownMenu">
+                <ul nz-menu>
+                  <li nz-menu-item>Adults <span style="float: right;"><nz-input-number [(ngModel)]="demoValue1" [nzMin]="1" [nzMax]="9" [nzStep]="1" (ngModelChange)="TravelersChange($event)"></nz-input-number></span></li>
+                  <li nz-menu-item>Seniors <span style="float: right;"><nz-input-number [(ngModel)]="demoValue2" [nzMin]="0" [nzMax]="9" [nzStep]="1" (ngModelChange)="TravelersChange($event)"></nz-input-number></span></li>
+                  <li nz-menu-item>Youth <span style="float: right;"><nz-input-number [(ngModel)]="demoValue3" [nzMin]="0" [nzMax]="9" [nzStep]="1" (ngModelChange)="TravelersChange($event)"></nz-input-number></span></li>
+                  <li nz-menu-item>Child <span style="float: right;"><nz-input-number [(ngModel)]="demoValue4" [nzMin]="0" [nzMax]="9" [nzStep]="1" (ngModelChange)="TravelersChange($event)"></nz-input-number></span></li>
+                </ul>
+              </nz-dropdown-menu>            
+        </div>
+        <div nz-col nzSm="6" nzMd="3" nzLg="2" class="col-container">
+            <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu4" [nzClickHide]="false">
+              {{totalBags}} Bags
+                <i nz-icon nzType="down"></i>
+            </a>
+              <nz-dropdown-menu #menu4="nzDropdownMenu">
+                <ul nz-menu>
+                  <li nz-menu-item>Carry-on bag <span><nz-input-number [(ngModel)]="demoValue5" [nzMin]="0" [nzMax]="1" [nzStep]="1" (ngModelChange)="BagsChange($event)"></nz-input-number></span></li>
+                  <li nz-menu-item>Checked bag <span><nz-input-number [(ngModel)]="demoValue6" [nzMin]="0" [nzMax]="2" [nzStep]="1" (ngModelChange)="BagsChange($event)"></nz-input-number></span></li>
+                </ul>
+              </nz-dropdown-menu>            
+        </div>
+        <div nz-col nzFlex="auto"></div>
+    </div> 
+    <div class="row-container" nz-row nzJustify="start">
+        <div nz-col nzMd="6" nzLg="5" nzXl="5" class="container-from">
+            <nz-select [(ngModel)]="selectFrom" nzMode="multiple" nzPlaceHolder="From?" [nzMaxMultipleCount]="3" [nzSize]="size" (ngModelChange)="onSelectChange($event)">
+                <nz-option *ngFor="let c of cityData" [nzValue]="c.cityID" [nzLabel]="c.cityName"></nz-option>
+            </nz-select>
+        </div>
+        <div nz-col nzMd="2" nzLg="2" nzXl="1"class="swap-button">
+            <button class="btn-block" nz-button nzType="default" [nzSize]="size" (click)=SwapSelect()><span><i nz-icon nzType="swap" nzTheme="outline"></i></span></button>
+        </div>
+        <div nz-col nzMd="6" nzLg="5" nzXl="5" class="container-to">
+            <nz-select [(ngModel)]="selectTo" nzMode="multiple" nzPlaceHolder="To?" [nzMaxMultipleCount]="2" [nzSize]="size">
+              <nz-option *ngFor="let c of cityData" [nzValue]="c.cityID" [nzLabel]="c.cityName"></nz-option>        
+            </nz-select>
+        </div>
+        <div nz-col *ngIf="oneWay; else elseTemplate" nzMd="14" nzLg="8" nzXl="6" class="container-date">
+            <nz-date-picker  [nzFormat]="dateFormat" [nzSize]="size"></nz-date-picker>
+        </div>
+        <ng-template #elseTemplate>
+          <div nz-col nzMd="14" nzLg="8" nzXl="6" class="container-date">
+            <nz-range-picker [nzFormat]="dateFormat" [nzSize]="size"></nz-range-picker>
+          </div>
+        </ng-template>        
+        <div nz-col nzMd="14" nzLg="2" nzXl="1" class="search-button">
+            <button class="btn-block" nz-button nzType="primary" [nzSize]="size" ><span><i nz-icon nzType="search"></i></span></button>
+        </div>
+    </div>
+</div>
+</ng-template>
+
+<!--Container when user select Multi City option-->
+<div class="container" *ngIf="multiCity; else elseTemplate2">
+  <div class="row-container" nz-row nzJustify="start">
+      <div nz-col nzSm="6" nzMd="3" nzLg="4" class="col-container">
+        <nz-select [(ngModel)]="selectedType" (ngModelChange)="TypeChange($event)">
+          <nz-option *ngFor="let t of typeData" [nzValue]="t" [nzLabel]="t"></nz-option>
+        </nz-select>
+      </div>
+      <div nz-col nzSm="6" nzMd="3" nzLg="2" class="col-container">
+          <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu3" [nzClickHide]="false">
+             {{totalTravelers}} Travelers
+              <i nz-icon nzType="down"></i>
+          </a>
+            <nz-dropdown-menu #menu3="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>Adults <span style="float: right;"><nz-input-number [(ngModel)]="demoValue1" [nzMin]="1" [nzMax]="9" [nzStep]="1" (ngModelChange)="TravelersChange($event)"></nz-input-number></span></li>
+                <li nz-menu-item>Seniors <span style="float: right;"><nz-input-number [(ngModel)]="demoValue2" [nzMin]="0" [nzMax]="9" [nzStep]="1" (ngModelChange)="TravelersChange($event)"></nz-input-number></span></li>
+                <li nz-menu-item>Youth <span style="float: right;"><nz-input-number [(ngModel)]="demoValue3" [nzMin]="0" [nzMax]="9" [nzStep]="1" (ngModelChange)="TravelersChange($event)"></nz-input-number></span></li>
+                <li nz-menu-item>Child <span style="float: right;"><nz-input-number [(ngModel)]="demoValue4" [nzMin]="0" [nzMax]="9" [nzStep]="1" (ngModelChange)="TravelersChange($event)"></nz-input-number></span></li>
+              </ul>
+            </nz-dropdown-menu>            
+      </div>
+      <div nz-col nzSm="6" nzMd="3" nzLg="2" class="col-container">
+          <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu4" [nzClickHide]="false">
+            {{totalBags}} Bags
+              <i nz-icon nzType="down"></i>
+          </a>
+            <nz-dropdown-menu #menu4="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>Carry-on bag <span><nz-input-number [(ngModel)]="demoValue5" [nzMin]="0" [nzMax]="1" [nzStep]="1" (ngModelChange)="BagsChange($event)"></nz-input-number></span></li>
+                <li nz-menu-item>Checked bag <span><nz-input-number [(ngModel)]="demoValue6" [nzMin]="0" [nzMax]="2" [nzStep]="1" (ngModelChange)="BagsChange($event)"></nz-input-number></span></li>
+              </ul>
+            </nz-dropdown-menu>            
+      </div>
+      <div nz-col nzFlex="auto"></div>
+  </div> 
+  <div class="row-container" nz-row nzJustify="start">
+      <div nz-col nzMd="6" nzLg="5" nzXl="5" class="container-from">
+          <nz-select [(ngModel)]="selectFrom" nzMode="multiple" nzPlaceHolder="From?" [nzMaxMultipleCount]="3" [nzSize]="size" (ngModelChange)="onSelectChange($event)">
+              <nz-option *ngFor="let c of cityData" [nzValue]="c.cityID" [nzLabel]="c.cityName"></nz-option>
+          </nz-select>
+      </div>
+      <div nz-col nzMd="2" nzLg="2" nzXl="1"class="swap-button">
+          <button class="btn-block" nz-button nzType="default" [nzSize]="size" (click)=SwapSelect()><span><i nz-icon nzType="swap" nzTheme="outline"></i></span></button>
+      </div>
+      <div nz-col nzMd="6" nzLg="5" nzXl="5" class="container-to">
+          <nz-select [(ngModel)]="selectTo" nzMode="multiple" nzPlaceHolder="To?" [nzMaxMultipleCount]="2" [nzSize]="size">
+            <nz-option *ngFor="let c of cityData" [nzValue]="c.cityID" [nzLabel]="c.cityName"></nz-option>        
+          </nz-select>
+      </div>
+      <div nz-col nzMd="14" nzLg="8" nzXl="6" class="container-date">
+          <nz-date-picker  [nzFormat]="dateFormat" [nzSize]="size"></nz-date-picker>
+      </div> 
+      <div nz-col nzMd="14" nzLg="8" nzXl="6" class="container-date">
+        <nz-select [(ngModel)]="selectedClass" (ngModelChange)="ClassChange($event)" [nzSize]="size">
+          <nz-option *ngFor="let c of classData" [nzValue]="c" [nzLabel]="c"></nz-option>
+        </nz-select>
+      </div> 
+  </div>
+  <div class="row-container" nz-row nzJustify="start">
+    <div nz-col nzMd="6" nzLg="5" nzXl="5" class="container-from">
+        <nz-select [(ngModel)]="selectFrom2" nzMode="multiple" nzPlaceHolder="From?" [nzMaxMultipleCount]="3" [nzSize]="size" (ngModelChange)="onSelectChange($event)">
+            <nz-option *ngFor="let c of cityData" [nzValue]="c.cityID" [nzLabel]="c.cityName"></nz-option>
+        </nz-select>
+    </div>
+    <div nz-col nzMd="2" nzLg="2" nzXl="1"class="swap-button">
+        <button class="btn-block" nz-button nzType="default" [nzSize]="size" (click)=SwapSelect2()><span><i nz-icon nzType="swap" nzTheme="outline"></i></span></button>
+    </div>
+    <div nz-col nzMd="6" nzLg="5" nzXl="5" class="container-to">
+        <nz-select [(ngModel)]="selectTo2" nzMode="multiple" nzPlaceHolder="To?" [nzMaxMultipleCount]="2" [nzSize]="size">
+          <nz-option *ngFor="let c of cityData" [nzValue]="c.cityID" [nzLabel]="c.cityName"></nz-option>        
+        </nz-select>
+    </div>
+    <div nz-col nzMd="14" nzLg="8" nzXl="6" class="container-date">
+        <nz-date-picker  [nzFormat]="dateFormat" [nzSize]="size"></nz-date-picker>
+    </div> 
+    <div nz-col nzMd="14" nzLg="8" nzXl="6" class="container-date">
+      <nz-select [(ngModel)]="selectedClass2" (ngModelChange)="ClassChange($event)" [nzSize]="size">
+        <nz-option *ngFor="let c of classData" [nzValue]="c" [nzLabel]="c"></nz-option>
+      </nz-select>
+    </div> 
+  </div>
+  <div class="row-container" nz-row nzJustify="start">
+    <div nz-col nzMd="6" nzLg="5" nzXl="5" class="container-from">
+        <nz-select [(ngModel)]="selectFrom3" nzMode="multiple" nzPlaceHolder="From?" [nzMaxMultipleCount]="3" [nzSize]="size" (ngModelChange)="onSelectChange($event)">
+            <nz-option *ngFor="let c of cityData" [nzValue]="c.cityID" [nzLabel]="c.cityName"></nz-option>
+        </nz-select>
+    </div>
+    <div nz-col nzMd="2" nzLg="2" nzXl="1"class="swap-button">
+        <button class="btn-block" nz-button nzType="default" [nzSize]="size" (click)=SwapSelect3()><span><i nz-icon nzType="swap" nzTheme="outline"></i></span></button>
+    </div>
+    <div nz-col nzMd="6" nzLg="5" nzXl="5" class="container-to">
+        <nz-select [(ngModel)]="selectTo3" nzMode="multiple" nzPlaceHolder="To?" [nzMaxMultipleCount]="2" [nzSize]="size">
+          <nz-option *ngFor="let c of cityData" [nzValue]="c.cityID" [nzLabel]="c.cityName"></nz-option>        
+        </nz-select>
+    </div>
+    <div nz-col nzMd="14" nzLg="8" nzXl="6" class="container-date">
+        <nz-date-picker  [nzFormat]="dateFormat" [nzSize]="size"></nz-date-picker>
+    </div>
+    <div nz-col nzMd="14" nzLg="8" nzXl="6" class="container-date">
+      <nz-select [(ngModel)]="selectedClass3" (ngModelChange)="ClassChange($event)" [nzSize]="size">
+        <nz-option *ngFor="let c of classData" [nzValue]="c" [nzLabel]="c"></nz-option>
+      </nz-select>
+    </div>
+  </div>
+  <div class="row-container" nz-row nzJustify="end">
+    <div nz-col nzMd="14" nzLg="2" nzXl="1" class="search-button">
+        <button class="btn-block" nz-button nzType="primary" [nzSize]="size" ><span><i nz-icon nzType="search"></i></span></button>
+    </div>
+  </div>
+</div>

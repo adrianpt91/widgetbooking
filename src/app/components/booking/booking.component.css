@@ -1,0 +1,121 @@
+nz-select {
+    width: 100%;
+  }
+ 
+  .ant-dropdown-link{
+    color: 00000;
+  }
+  
+.ant-btn-primary {
+    background-color: #ee4719;
+    border-color: #ee4719;
+}
+
+.ant-btn-primary:hover {
+    background-color: #ff690f;
+    border-color: #ff690f;
+}
+
+.ant-input-number:hover {
+    border-color: #ee4719;
+}
+
+.ant-select:hover {
+  border-color: #ee4719;
+}
+
+.ant-input:hover {
+    border-color: #ee4719;
+}
+.container-date{
+  margin-inline: 0.25em;
+  width: 100%;
+}
+.swap-button{
+    margin-inline: 0.25em;
+}
+.ant-btn:hover{
+    color: #ee4719;
+    border-color: #ee4719;
+}
+
+.row-container{
+  margin-bottom: 1em;
+}
+
+.col-container{
+  margin-inline-end: 0.25em;
+}
+
+.ant-select ul {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .container-from {
+    width: 100%;
+    float: left;
+    margin-bottom: 0.25em;
+    margin-inline: 0em;
+    }
+    .container-to {
+      width: 100%;
+      float: left;
+      margin-bottom: 0.25em;
+      margin-inline: 0em;
+      }
+    .swap-button{
+      width: 100%;
+      float: left;
+      margin-bottom: 0.25em;
+      margin-inline: 0em;
+    }
+    .container-date{
+      width: 100%;
+      float: left;
+      margin-bottom: 0.25em;
+      margin-inline: 0em; 
+    }
+    .search-button{
+      width: 100%;
+      float: left;           
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    .container-from {
+      width: 40%;
+      float: left;
+      margin-bottom: 0.25em;
+      margin-inline: 0em;
+      }
+      .container-to {
+        width: 40%;
+        float: left;
+        margin-bottom: 0.25em;
+        margin-inline: 0em;
+        }
+      .swap-button{
+        width: 20%;
+        float: left;
+        margin-bottom: 0.25em;
+        margin-inline: 0em;
+      }
+      .container-date{
+        width: 100%;
+        float: left;
+        margin-bottom: 0.25em;
+        margin-inline: 0em; 
+        justify-content: center;
+      }
+      .search-button{
+        width: 100%;
+        float: left;           
+      }
+    }
+  @media (min-width: 1200px) {
+    .col-container {
+      width: 20%;
+      float: left;
+      }
+  }
