@@ -24,9 +24,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "widgetbooking"
+    }
+  },
+  "defaultProject": "widgetbooking",
+  "cli": {
+    "analytics": "8e2bc9be-b54c-4df6-b3b7-53896db40b4e"
+  }
 }
