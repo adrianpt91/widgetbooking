@@ -28,11 +28,13 @@ nz-select {
     border-color: #ee4719;
 }
 .container-date{
-  margin-inline: 0.25em;
+  margin-inline-end: 0.25em;
+  margin-inline-start: 0.25em;
   width: 100%;
 }
 .swap-button{
-    margin-inline: 0.25em;
+    margin-inline-end: 0.25em;
+    margin-inline-start: 0.25em;
 }
 .ant-btn:hover{
     color: #ee4719;
@@ -47,6 +49,10 @@ nz-select {
   margin-inline-end: 0.25em;
 }
 
+.container-from {
+  margin-inline-end: 0.25;
+}
+
 .ant-select ul {
   font-weight: bold;
 }
@@ -56,25 +62,29 @@ nz-select {
     width: 100%;
     float: left;
     margin-bottom: 0.25em;
-    margin-inline: 0em;
+    margin-inline-end: 0em;
+    margin-inline-start: 0em;
     }
     .container-to {
       width: 100%;
       float: left;
       margin-bottom: 0.25em;
-      margin-inline: 0em;
+      margin-inline-end: 0em;
+      margin-inline-start: 0em;
       }
     .swap-button{
       width: 100%;
       float: left;
       margin-bottom: 0.25em;
-      margin-inline: 0em;
+      margin-inline-end: 0em;
+     margin-inline-start: 0em;
     }
     .container-date{
       width: 100%;
       float: left;
       margin-bottom: 0.25em;
-      margin-inline: 0em; 
+      margin-inline-end: 0em;
+      margin-inline-start: 0em; 
     }
     .search-button{
       width: 100%;
@@ -87,25 +97,29 @@ nz-select {
       width: 40%;
       float: left;
       margin-bottom: 0.25em;
-      margin-inline: 0em;
+      margin-inline-end: 0em;
+      margin-inline-start: 0em;
       }
       .container-to {
         width: 40%;
         float: left;
         margin-bottom: 0.25em;
-        margin-inline: 0em;
+        margin-inline-end: 0em;
+        margin-inline-start: 0em;
         }
       .swap-button{
         width: 20%;
         float: left;
         margin-bottom: 0.25em;
-        margin-inline: 0em;
+        margin-inline-end: 0em;
+      margin-inline-start: 0em;
       }
       .container-date{
         width: 100%;
         float: left;
         margin-bottom: 0.25em;
-        margin-inline: 0em; 
+        margin-inline-end: 0em;
+        margin-inline-start: 0em; 
         justify-content: center;
       }
       .search-button{

@@ -80,6 +80,10 @@ export class BookingComponent implements OnInit {
     if(value == 'Multi-city'){
       this.multiCity = true
     }
+    if(value == 'Round-trip'){
+      this.multiCity = false
+      this.oneWay = false
+    }
   }
 
   ClassChange(value: any): void {
